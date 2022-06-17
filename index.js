@@ -223,10 +223,13 @@ function displayPassword() {
 }
 
 function clearPassword() {
+getLength=15
   passwordOne.textContent = "";
   passwordTwo.textContent = "";
   numberToggle.checked = false;
   symbolToggle.checked = false;
+  
+
 }
  let msg = document.createElement("p");
  let wrap = document.querySelector(".wrapper");

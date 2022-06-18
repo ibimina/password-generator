@@ -110,11 +110,11 @@ let letterSymbol = `${letter}${symbolOnly}`;
 const symbolToggle = document.querySelector("#sym");
 const numberToggle = document.querySelector("#num");
 const password = document.querySelector(".password");
-let passwordOne = document.querySelector(".pass-one");
-let passwordTwo = document.querySelector(".pass-two");
+let firstPassword = document.querySelector(".pass-one");
+let secondPassword = document.querySelector(".pass-two");
 
-const button = document.querySelector(".print");
-const buttonTwo = document.querySelector(".clear");
+const printPassword = document.querySelector(".print");
+const resetField = document.querySelector(".clear");
 
 let getLength;
 let generatePasss = "";
@@ -209,49 +209,77 @@ const generate = (generatePass) => {
 };
 
 function displayPassword() {
-  passwordOne.textContent = generate(geb);
-  passwordTwo.textContent = generate(generatePasss);
+  firstPassword.textContent = generate(geb);
+  secondPassword.textContent = generate(generatePasss);
   password.len.value = "";
 }
 
-function clearPassword() {
+function resetPassword() {
   getLength = 15;
-  passwordOne.textContent = "";
-  passwordTwo.textContent = "";
+  firstPassword.textContent = "";
+ secondPassword.textContent = "";
   numberToggle.checked = false;
   symbolToggle.checked = false;
 }
-let msg = document.createElement("p");
-let wrap = document.querySelector(".wrapper");
-function copyText(ev) {
+
+
+
+function copyPassword(pass) {
   // console.log("hi");
-  let text = ev;
-  let textArea = document.createElement("textarea");
-  textArea.width = "1px";
-  textArea.height = "1px";
-  textArea.background = "transparents";
-  textArea.value = text;
-  document.body.append(textArea);
-  textArea.select();
-  document.execCommand("copy"); //No i18n
-  document.body.removeChild(textArea);
-  alert("password copied");
+  let text = pass;
+  if (text.length) {
+    let textArea = document.createElement("textarea");
+    textArea.width = "1px";
+    textArea.height = "1px";
+    textArea.background = "transparents";
+    textArea.value = text;
+    console.log(textArea.value);
+    document.body.append(textArea);
+    textArea.select();
+    document.execCommand("copy"); 
+    document.body.removeChild(textArea);
+  }
+
+
 }
+let copyFirstPassword = document.querySelector(".password-copy-one")
+let copySecondPassword = document.querySelector(".password-copy-two");
 
-function savePassword() {
-  // passwordOne.textContent
-  let some = passwordOne.textContent;
 
-  copyText(some);
-  let me = passwordTwo.textContent;
-  copyText(me);
-}
 
-// setTimeout(wrap.removeChild(msg),3000)
-passwordOne.addEventListener("click", savePassword);
-passwordTwo.addEventListener("click", savePassword);
 
-button.addEventListener("click", (e) => {
+ firstPassword.addEventListener("click", (e) => {
+   if (e.target) {
+     let text = firstPassword.textContent;
+     copyPassword(text);
+     if (text.length) {
+       copyFirstPassword.style.display = "block";
+     }
+
+     setInterval(() => {
+       copyFirstPassword.style.display = "none";
+     }, 2000);
+   }
+ });
+
+ secondPassword.addEventListener("click", (e) => {
+   if (e.target) {
+     let text = secondPassword.textContent;
+     // savePassword(some);
+     copyPassword(text);
+     if (text.length) {
+       copySecondPassword.style.display = "block";
+     }
+
+     setInterval(() => {
+       copySecondPassword.style.display = "none";
+     }, 2000);
+   }
+ });
+
+
+
+printPassword.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target) {
     displayPassword();
@@ -259,11 +287,11 @@ button.addEventListener("click", (e) => {
   }
 });
 
-//console.log(buttonTwo);
-buttonTwo.addEventListener("click", (e) => {
+
+resetField.addEventListener("click", (e) => {
   e.preventDefault();
   if (e.target) {
-    clearPassword();
+    resetPassword();
     //console.log("v");
   }
 });

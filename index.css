@@ -203,7 +203,24 @@ cursor: pointer;
 p{
     color: #fff;
     margin-top: .5rem;
-
+}
+.wrap-copyone,.wrap-copytwo{
+position: relative;
+}
+.copytext{
+    position: absolute;
+    top: -1rem;
+    left: 7rem;
+    border-radius:10px ;
+    background-color: #101a2b;
+    padding: .2rem;
+    font-weight: 100;
+}
+.password-copy-one{
+    display: none;
+}
+.password-copy-two{
+    display: none;
 }
 @media (min-width:40rem) {
     .container{

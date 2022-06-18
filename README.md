@@ -71,20 +71,42 @@ const generate = (generatePass) => {
 
 This copys the password to the clipboard when clicked
 ```js
-function copyText(ev) {
+function copyPassword(pass) {
   // console.log("hi");
-  let text = ev;
-  let textArea = document.createElement("textarea");
-  textArea.width = "1px";
-  textArea.height = "1px";
-  textArea.background = "transparents";
-  textArea.value = text;
-  document.body.append(textArea);
-  textArea.select();
-  document.execCommand("copy"); //No i18n
-  document.body.removeChild(textArea);
+  let text = pass;
+  if (text.length) {
+    let textArea = document.createElement("textarea");
+    textArea.width = "1px";
+    textArea.height = "1px";
+    textArea.background = "transparents";
+    textArea.value = text;
+    console.log(textArea.value);
+    document.body.append(textArea);
+    textArea.select();
+    document.execCommand("copy"); 
+    document.body.removeChild(textArea);
+  }
+
+
 }
 
+```
+
+This function copy the password to the clipboard and displays a copied message for 2seconds
+```js
+firstPassword.addEventListener("click", (e) => {
+   if (e.target) {
+     let text = firstPassword.textContent;
+     copyPassword(text);
+     if (text.length) {
+       copyFirstPassword.style.display = "block";
+     }
+
+     setInterval(() => {
+       copyFirstPassword.style.display = "none";
+     }, 2000);
+   }
+ });
 ```
 ### Continued development
 

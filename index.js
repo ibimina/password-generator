@@ -245,9 +245,6 @@ function copyPassword(pass) {
 let copyFirstPassword = document.querySelector(".password-copy-one")
 let copySecondPassword = document.querySelector(".password-copy-two");
 
-
-
-
  firstPassword.addEventListener("click", (e) => {
    if (e.target) {
      let text = firstPassword.textContent;

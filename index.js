@@ -205,15 +205,7 @@ const generate = (generatePass) => {
       return generatePass;
     }
   }
-  //  else if (getLength && symbolToggle.checked && !numberToggle.checked) {
-  //   passwordLength = getLength - 1;
-  //   for (let i = 0; i <= passwordLength; i++) {
-  //     let randomPassword = Math.floor(Math.random() * letterSymbol.length);
-  //     generatePass += letterSymbol.substring(randomPassword, randomPassword + 1);
-  //   }
-  //   console.log("g");
-  //   return generatePass;
-  // } else if (getLength && numberToggle.checked && !symbolToggle.checked) {
+  
 };
 
 function displayPassword() {
@@ -223,16 +215,14 @@ function displayPassword() {
 }
 
 function clearPassword() {
-getLength=15
+  getLength = 15;
   passwordOne.textContent = "";
   passwordTwo.textContent = "";
   numberToggle.checked = false;
   symbolToggle.checked = false;
-  
-
 }
- let msg = document.createElement("p");
- let wrap = document.querySelector(".wrapper");
+let msg = document.createElement("p");
+let wrap = document.querySelector(".wrapper");
 function copyText(ev) {
   // console.log("hi");
   let text = ev;
@@ -245,24 +235,19 @@ function copyText(ev) {
   textArea.select();
   document.execCommand("copy"); //No i18n
   document.body.removeChild(textArea);
-  alert("password copied")
- 
-
-  
+  alert("password copied");
 }
-
 
 function savePassword() {
   // passwordOne.textContent
   let some = passwordOne.textContent;
-  
+
   copyText(some);
   let me = passwordTwo.textContent;
   copyText(me);
 }
-  
-   
-  // setTimeout(wrap.removeChild(msg),3000)
+
+// setTimeout(wrap.removeChild(msg),3000)
 passwordOne.addEventListener("click", savePassword);
 passwordTwo.addEventListener("click", savePassword);
 

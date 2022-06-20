@@ -171,9 +171,10 @@ position: relative;
     top: -1rem;
     left: 7rem;
     border-radius:10px ;
-    background-color: #101a2b;
+    background-color: #1c3664;
     padding: .2rem;
     font-weight: 100;
+    color: #fff;
 }
 .password-copy-one{
     display: none;
